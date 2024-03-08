@@ -1,0 +1,7 @@
+<div class="tab">
+    <button *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active">
+        {{ tab.title }}
+        <span class="close" (click)="closeTab(tab)">&times;</span>
+    </button>
+</div>
+<ng-content></ng-content>
