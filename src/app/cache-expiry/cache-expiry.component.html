@@ -1,8 +1,9 @@
 <div class="well">
-    <h2>Set the cache expiry (in seconds):</h2>
+    <h4>Set the cache expiry (in seconds):</h4>
+    <p>Weather data is cached for the amount of seconds set here.</p>
     <input type="number" placeholder="Cache Expiry" class="form-control" [(ngModel)]="cacheExpiry">
     <br>
-    <button class="btn btn-primary" (click)="setCacheExpiry()" >
+    <button class="btn btn-default" (click)="setCacheExpiry()" >
         Set cache expiry
     </button>
 </div>

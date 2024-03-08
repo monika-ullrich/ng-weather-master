@@ -37,6 +37,6 @@ export class CurrentConditionsComponent implements OnInit {
   }
 
   getTitle(location: ConditionsAndZip) {
-    return location.data.name + '(' + location.zip + ')'
+    return location.data.name + ' (' + location.zip + ')'
   }
 }
