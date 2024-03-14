@@ -29,7 +29,7 @@ export class TabComponent {
 
   set active(active: boolean) {
     this._active = active
-    this.cd.markForCheck()
+    this.cd.detectChanges()
   }
 
   get active() {
