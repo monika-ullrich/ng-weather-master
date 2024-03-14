@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {CacheService} from "../cache/cache.service";
-import {FormsModule} from "@angular/forms";
+import {CacheService} from '../cache/cache.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-cache-expiry',

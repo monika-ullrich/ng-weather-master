@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {NgIf} from "@angular/common";
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output} from '@angular/core';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-tab',
@@ -8,18 +8,32 @@ import {NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './tab.component.html',
-  styleUrl: './tab.component.css'
+  styleUrl: './tab.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabComponent {
   @Input()
   title: string
 
-  active = false
-
   @Output()
   close: EventEmitter<boolean> = new EventEmitter<boolean>()
+
+  _active = false
+
+  constructor(private cd: ChangeDetectorRef) {
+  }
 
   closeTab() {
     this.close.emit(true)
   }
+
+  set active(active: boolean) {
+    this._active = active
+    this.cd.markForCheck()
+  }
+
+  get active() {
+    return this._active
+  }
+
 }
