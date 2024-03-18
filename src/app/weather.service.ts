@@ -27,7 +27,18 @@ export class WeatherService {
       this.cacheService.cacheCurrentConditions(zipcode, conditions$)
     }
     // Here we make a request to get the current conditions data from the API. Note the use of backticks and an expression to insert the zipcode
-    conditions$.subscribe(data => this.currentConditions.update(conditions => [...conditions, {zip: zipcode, data}]));
+    conditions$.subscribe(data => {
+      // Update if already exists.
+      this.currentConditions.update(conditions => {
+        const existingConditionForZipIndex = conditions.findIndex((condition) => condition.zip === zipcode)
+        if (existingConditionForZipIndex > -1) {
+          conditions.splice(existingConditionForZipIndex, 1, {zip: zipcode, data})
+          return [...conditions]
+        } else {
+          return [...conditions, {zip: zipcode, data}]
+        }
+      })
+    });
   }
 
   removeCurrentConditions(zipcode: string) {
